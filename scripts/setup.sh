@@ -3,6 +3,8 @@
 set -euo pipefail
 
 ROOT="$(cd "$(dirname "$0")/.." && pwd)"
+TF2_APPID="232250"
+TF2_DIR="/srv/tf2"
 
 check_platform()
 {
@@ -50,7 +52,21 @@ install_steamcmd()
 
 install_tf2()
 {
-    exit 1
+    echo "Installing TF2 Dedicated Server..."
+    if [[ -x "$TF2_DIR/srcds_run" ]]; then
+        echo "TF2 already installed."
+        echo
+        return
+    fi
+    sudo mkdir -p "$TF2_DIR"
+    sudo chown "$USER:$USER" "$TF2_DIR"
+
+    steamcmd \
+        +force_install_dir "$TF2_DIR" \
+        +login anonymous \
+        +app_update "$TF2_APPID" validate \
+        +quit
+    echo
 }
 
 install_metamod()
