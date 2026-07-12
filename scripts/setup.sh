@@ -105,7 +105,13 @@ install_sourcemod()
 
 build_plugin()
 {
-    exit 1
+    echo "Building plugin..."
+    "$ROOT/scripts/build.sh"
+    if [[ ! -f "$ROOT/build/tf2nostalgia.smx" ]]; then
+        echo "ERROR: Plugin build failed."
+        exit 1
+    fi
+    echo
 }
 
 deploy_plugin()
