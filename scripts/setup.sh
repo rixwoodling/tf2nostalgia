@@ -138,8 +138,16 @@ configure_server()
 
 print_summary()
 {
-    exit 1
+    echo "========================================"
+    echo "TF2 Nostalgia Setup Complete"
+    echo "========================================"
+    echo
+    echo "Repository : $ROOT"
+    echo "TF2 Server : $TF2_DIR"
+    echo "Plugin     : $TF2_DIR/tf/addons/sourcemod/plugins/tf2nostalgia.smx"
+    echo
 }
+
 
 main()
 {
