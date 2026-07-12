@@ -1,0 +1,22 @@
+{
+    "name": "Launch Era",
+    "year": 2007,
+    "release_date": "2007-10-10",
+
+    "hostname": "TF2 Nostalgia | Launch Era (2007)",
+
+    "motd": "launch.html",
+
+    "maps": [
+        "ctf_2fort",
+        "ctf_well",
+        "cp_well",
+        "cp_granary",
+        "cp_gravelpit",
+        "cp_dustbowl",
+        "tc_hydro"
+    ],
+    "weapons": [],
+    "cosmetics": [],
+    "taunts": []
+}
