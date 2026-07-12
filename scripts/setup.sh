@@ -38,35 +38,49 @@ install_dependencies()
 
 install_steamcmd()
 {
-    exit 1
+    echo "Installing SteamCMD..."
+    if command -v steamcmd >/dev/null 2>&1; then
+        echo "SteamCMD already installed."
+        echo
+        return
+    fi
+    sudo apt install -y steamcmd
+    echo
 }
 
 install_tf2()
 {
+    exit 1
 }
 
 install_metamod()
 {
+    exit 1
 }
 
 install_sourcemod()
 {
+    exit 1
 }
 
 build_plugin()
 {
+    exit 1
 }
 
 deploy_plugin()
 {
+    exit 1
 }
 
 configure_server()
 {
+    exit 1
 }
 
 print_summary()
 {
+    exit 1
 }
 
 main()
