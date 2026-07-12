@@ -116,7 +116,15 @@ build_plugin()
 
 deploy_plugin()
 {
-    exit 1
+    echo "Deploying plugin..."
+    if [[ ! -f "$ROOT/build/tf2nostalgia.smx" ]]; then
+        echo "ERROR: Plugin not found."
+        exit 1
+    fi
+    cp \
+        "$ROOT/build/tf2nostalgia.smx" \
+        "$TF2_DIR/tf/addons/sourcemod/plugins/"
+    echo
 }
 
 configure_server()
