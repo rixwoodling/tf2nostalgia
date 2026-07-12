@@ -32,8 +32,8 @@ install_dependencies()
 {
     echo "Installing dependencies..."
     sudo dpkg --add-architecture i386
-    sudo apt update
-    sudo apt install -y \
+    sudo apt update -qq
+    sudo apt install -y -qq \
         curl \
         git \
         tar \
@@ -146,6 +146,8 @@ print_summary()
     echo "TF2 Server : $TF2_DIR"
     echo "Plugin     : $TF2_DIR/tf/addons/sourcemod/plugins/tf2nostalgia.smx"
     echo
+    echo "Start:"
+    echo "  ./scripts/start.sh"
 }
 
 
