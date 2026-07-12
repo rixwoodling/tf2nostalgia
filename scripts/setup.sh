@@ -129,7 +129,11 @@ deploy_plugin()
 
 configure_server()
 {
-    exit 1
+    echo "Configuring server..."
+    cp -r \
+        "$ROOT/configs/." \
+        "$TF2_DIR/tf/cfg/"
+    echo
 }
 
 print_summary()
