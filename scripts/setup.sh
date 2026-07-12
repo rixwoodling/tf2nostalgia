@@ -5,6 +5,10 @@ set -euo pipefail
 ROOT="$(cd "$(dirname "$0")/.." && pwd)"
 TF2_APPID="232250"
 TF2_DIR="/srv/tf2"
+METAMOD_VERSION="1.12.0-git1224"
+SOURCEMOD_VERSION="1.12.0-git7239"
+METAMOD_URL="https://mms.alliedmods.net/mmsdrop/1.12/mmsource-${METAMOD_VERSION}-linux.tar.gz"
+SOURCEMOD_URL="https://sm.alliedmods.net/smdrop/1.12/sourcemod-${SOURCEMOD_VERSION}-linux.tar.gz"
 
 check_platform()
 {
@@ -71,7 +75,17 @@ install_tf2()
 
 install_metamod()
 {
-    exit 1
+    echo "Installing MetaMod..."
+    if [[ -f "$TF2_DIR/tf/addons/metamod/bin/server.so" ]]; then
+        echo "MetaMod already installed."
+        echo
+        return
+    fi
+    cd /tmp
+    curl -L -o metamod.tar.gz "$METAMOD_URL"
+    tar -xzf metamod.tar.gz -C "$TF2_DIR/tf"
+    rm -f metamod.tar.gz
+    echo
 }
 
 install_sourcemod()
