@@ -90,7 +90,17 @@ install_metamod()
 
 install_sourcemod()
 {
-    exit 1
+    echo "Installing SourceMod..."
+    if [[ -d "$TF2_DIR/tf/addons/sourcemod" ]]; then
+        echo "SourceMod already installed."
+        echo
+        return
+    fi
+    cd /tmp
+    curl -L -o sourcemod.tar.gz "$SOURCEMOD_URL"
+    tar -xzf sourcemod.tar.gz -C "$TF2_DIR/tf"
+    rm -f sourcemod.tar.gz
+    echo
 }
 
 build_plugin()
