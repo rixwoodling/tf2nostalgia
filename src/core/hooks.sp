@@ -21,10 +21,14 @@ public void Event_PlayerSpawn(Event event, const char[] name, bool dontBroadcast
         return;
 
     TFClassType class = TF2_GetPlayerClass(client);
+
+    char className[16];
+    GetClassName(class, className, sizeof(className));
+
     PrintToServer(
-        "[TF2N] %N spawned as %d.",
+        "[TF2N] %N spawned as %s.",
         client,
-        class
+        className
     );
 }
 
@@ -37,19 +41,38 @@ bool IsValidClient(int client)
     );
 }
 
-const char[] GetClassName(TFClassType class)
+void GetClassName(TFClassType class, char[] buffer, int maxlen)
 {
     switch (class)
     {
-        case TFClass_Scout:     return "Scout";
-        case TFClass_Sniper:    return "Sniper";
-        case TFClass_Soldier:   return "Soldier";
-        case TFClass_DemoMan:   return "Demoman";
-        case TFClass_Medic:     return "Medic";
-        case TFClass_Heavy:     return "Heavy";
-        case TFClass_Pyro:      return "Pyro";
-        case TFClass_Spy:       return "Spy";
-        case TFClass_Engineer:  return "Engineer";
+        case TFClass_Scout:
+            strcopy(buffer, maxlen, "Scout");
+
+        case TFClass_Sniper:
+            strcopy(buffer, maxlen, "Sniper");
+
+        case TFClass_Soldier:
+            strcopy(buffer, maxlen, "Soldier");
+
+        case TFClass_DemoMan:
+            strcopy(buffer, maxlen, "Demoman");
+
+        case TFClass_Medic:
+            strcopy(buffer, maxlen, "Medic");
+
+        case TFClass_Heavy:
+            strcopy(buffer, maxlen, "Heavy");
+
+        case TFClass_Pyro:
+            strcopy(buffer, maxlen, "Pyro");
+
+        case TFClass_Spy:
+            strcopy(buffer, maxlen, "Spy");
+
+        case TFClass_Engineer:
+            strcopy(buffer, maxlen, "Engineer");
+
+        default:
+            strcopy(buffer, maxlen, "Unknown");
     }
-    return "Unknown";
 }
