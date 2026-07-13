@@ -36,3 +36,20 @@ bool IsValidClient(int client)
         IsClientInGame(client)
     );
 }
+
+const char[] GetClassName(TFClassType class)
+{
+    switch (class)
+    {
+        case TFClass_Scout:     return "Scout";
+        case TFClass_Sniper:    return "Sniper";
+        case TFClass_Soldier:   return "Soldier";
+        case TFClass_DemoMan:   return "Demoman";
+        case TFClass_Medic:     return "Medic";
+        case TFClass_Heavy:     return "Heavy";
+        case TFClass_Pyro:      return "Pyro";
+        case TFClass_Spy:       return "Spy";
+        case TFClass_Engineer:  return "Engineer";
+    }
+    return "Unknown";
+}
