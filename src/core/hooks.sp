@@ -4,6 +4,7 @@
 #define _TF2N_HOOKS_
 
 #include <sdkhooks>
+#include <tf2>
 
 void Hooks_Init()
 {
@@ -19,7 +20,12 @@ public void Event_PlayerSpawn(Event event, const char[] name, bool dontBroadcast
     if (!IsValidClient(client))
         return;
 
-    PrintToServer("[TF2N] %N spawned.", client);
+    TFClassType class = TF2_GetPlayerClass(client);
+    PrintToServer(
+        "[TF2N] %N spawned as %d.",
+        client,
+        class
+    );
 }
 
 bool IsValidClient(int client)
