@@ -14,7 +14,7 @@ public Plugin myinfo =
     name = "TF2 Nostalgia Engine",
     author = "Rix",
     description = "Historical rules engine for Team Fortress 2",
-    version = "dev"
+    version = "dev",
     url = ""
 };
 
