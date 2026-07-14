@@ -21,9 +21,19 @@ void InspectWeapons(int client)
         "m_iItemDefinitionIndex"
     );
 
+    bool allowed = IsWeaponAllowed(itemDef);
+
     PrintToServer(
-        "[TF2N] Primary entity: %d  ItemDef: %d",
-        weapon,
-        itemDef
+        "[TF2N] Primary ItemDef: %d  Allowed: %s",
+        itemDef,
+        allowed ? "Yes" : "No"
     );
+}
+
+bool IsWeaponAllowed(int itemDef)
+{
+    // TODO
+    // Temporary placeholder until the whitelist is implemented.
+
+    return true;
 }
