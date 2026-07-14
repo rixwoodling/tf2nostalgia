@@ -28,6 +28,11 @@ void InspectWeapons(int client)
         itemDef,
         allowed ? "Yes" : "No"
     );
+
+    if (!allowed)
+    {
+        NormalizePrimaryWeapon(client, itemDef);
+    }
 }
 
 bool IsWeaponAllowed(int itemDef)
@@ -44,4 +49,12 @@ bool IsWeaponAllowed(int itemDef)
             return false;
         }
     }
+}
+
+void NormalizePrimaryWeapon(int client, int itemDef)
+{
+    PrintToServer(
+        "[TF2N] Would normalize primary weapon (ItemDef: %d).",
+        itemDef
+    );
 }
