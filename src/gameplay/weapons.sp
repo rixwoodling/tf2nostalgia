@@ -34,10 +34,14 @@ bool IsWeaponAllowed(int itemDef)
 {
     switch (itemDef)
     {
-        case 18:   // Rocket Launcher
-        case 205:  // Rocket Jumper
+        case 18, 205:
+        {
             return true;
-    }
+        }
 
-    return false;
+        default:
+        {
+            return false;
+        }
+    }
 }
