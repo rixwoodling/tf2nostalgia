@@ -35,5 +35,5 @@ bool IsWeaponAllowed(int itemDef)
     // TODO
     // Temporary placeholder until the whitelist is implemented.
 
-    return true;
+    return (itemDef >= 0);
 }
