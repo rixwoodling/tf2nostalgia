@@ -30,6 +30,8 @@ public void Event_PlayerSpawn(Event event, const char[] name, bool dontBroadcast
         client,
         className
     );
+
+    InspectWeapons(client);
 }
 
 bool IsValidClient(int client)
