@@ -51,11 +51,32 @@ bool IsWeaponAllowed(int itemDef)
     }
 }
 
+int GetStockReplacement(int itemDef)
+{
+    switch (itemDef)
+    {
+        case 205: // Rocket Jumper
+        {
+            return 18; // Rocket Launcher
+        }
+
+        case 208: // Backburner
+        {
+            return 21; // Flamethrower
+        }
+    }
+
+    return -1;
+}
+
 void NormalizePrimaryWeapon(int client, int itemDef)
 {
+    int replacement = GetStockReplacement(itemDef);
+
     PrintToServer(
-        "[TF2N] Would normalize %N's primary weapon (ItemDef: %d).",
+        "[TF2N] Would normalize %N's primary weapon (ItemDef: %d -> %d).",
         client,
-        itemDef
+        itemDef,
+        replacement
     );
 }
