@@ -54,7 +54,8 @@ bool IsWeaponAllowed(int itemDef)
 void NormalizePrimaryWeapon(int client, int itemDef)
 {
     PrintToServer(
-        "[TF2N] Would normalize primary weapon (ItemDef: %d).",
+        "[TF2N] Would normalize %N's primary weapon (ItemDef: %d).",
+        client,
         itemDef
     );
 }
