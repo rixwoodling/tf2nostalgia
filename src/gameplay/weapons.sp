@@ -32,8 +32,12 @@ void InspectWeapons(int client)
 
 bool IsWeaponAllowed(int itemDef)
 {
-    // TODO
-    // Temporary placeholder until the whitelist is implemented.
+    switch (itemDef)
+    {
+        case 18:   // Rocket Launcher
+        case 205:  // Rocket Jumper
+            return true;
+    }
 
-    return (itemDef >= 0);
+    return false;
 }
