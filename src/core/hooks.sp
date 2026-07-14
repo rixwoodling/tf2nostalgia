@@ -4,6 +4,7 @@
 #define _TF2N_HOOKS_
 
 #include <sdkhooks>
+#include "../gameplay/weapons.sp"
 #include <tf2_stocks>
 
 void Hooks_Init()
