@@ -3,9 +3,21 @@
 import re
 import sys
 from pathlib import Path
+import sys
+
+try:
+    import vdf
+except ImportError:
+    print("ERROR: Python package 'vdf' is not installed.")
+    print()
+    print("Example:")
+    print()
+    print("    python3 -m venv venv")
+    print("    source venv/bin/activate")
+    print("    pip install vdf")
+    sys.exit(1)
 
 DEFAULT_ITEMS_GAME = Path("/srv/tf2/tf/scripts/items/items_game.txt")
-
 
 def get_items_game():
     if len(sys.argv) > 2:
