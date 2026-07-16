@@ -69,14 +69,17 @@ def main():
     with output_file.open("w", encoding="utf-8") as f:
         sorted_items = {}
 
-        for itemdef in sorted(items.keys(), key=int):
-            if itemdef == "default":
-                continue
+        itemdefs = sorted(
+            (itemdef for itemdef in items.keys() if itemdef != "default"),
+            key=int
+        )
 
+        for itemdef in itemdefs:
             item = items[itemdef]
 
             sorted_items[itemdef] = {
                 "name": item.get("name"),
+                "item_name": item.get("item_name"),
                 "prefab": item.get("prefab"),
                 "baseitem": item.get("baseitem") == "1"
             }
