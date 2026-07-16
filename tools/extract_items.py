@@ -1,9 +1,8 @@
 #!/usr/bin/env python3
 
-import re
+import json
 import sys
 from pathlib import Path
-import sys
 
 try:
     import vdf
@@ -35,21 +34,44 @@ def get_items_game():
 
     return path
 
-
 def main():
     items_game = get_items_game()
 
     print(f"Loading: {items_game}")
 
-    item_count = 0
-
     with items_game.open("r", encoding="utf-8", errors="ignore") as f:
-        for line in f:
-            if re.match(r'^\s*"\d+"\s*$', line):
-                item_count += 1
+        data = vdf.load(f)
 
-    print(f"Found {item_count} item definitions.")
+    items = data["items_game"]["items"]
 
+    output = {
+        "item_count": 0,
+        "items": {}
+    }
+
+    for itemdef, item in items.items():
+        if itemdef == "default":
+            continue
+
+        output["items"][itemdef] = {
+            "name": item.get("name"),
+            "prefab": item.get("prefab"),
+            "baseitem": item.get("baseitem") == "1"
+        }
+
+    output["item_count"] = len(output["items"])
+
+    output_file = Path(__file__).parent.parent / "data" / "items.json"
+    output_file.parent.mkdir(parents=True, exist_ok=True)
+
+    import json
+
+    with output_file.open("w", encoding="utf-8") as f:
+        json.dump(output, f, indent=4, sort_keys=True)
+
+    print(f"Wrote {output['item_count']} items.")
+    print(f"Output: {output_file}")
 
 if __name__ == "__main__":
     main()
+
