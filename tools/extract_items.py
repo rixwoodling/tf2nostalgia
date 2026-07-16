@@ -67,7 +67,24 @@ def main():
     import json
 
     with output_file.open("w", encoding="utf-8") as f:
-        json.dump(output, f, indent=4, sort_keys=True)
+        sorted_items = {}
+
+        for itemdef in sorted(items.keys(), key=int):
+            if itemdef == "default":
+                continue
+
+            item = items[itemdef]
+
+            sorted_items[itemdef] = {
+                "name": item.get("name"),
+                "prefab": item.get("prefab"),
+                "baseitem": item.get("baseitem") == "1"
+            }
+
+        output = {
+            "item_count": len(sorted_items),
+            "items": sorted_items
+        }
 
     print(f"Wrote {output['item_count']} items.")
     print(f"Output: {output_file}")
